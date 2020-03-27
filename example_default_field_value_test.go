@@ -3,7 +3,7 @@ package logrus_test
 import (
 	"os"
 
-	"github.com/sirupsen/logrus"
+	"github.com/17media/logrus"
 )
 
 type DefaultFieldHook struct {
