@@ -13,7 +13,7 @@ type Fields map[string]interface{}
 type Level uint32
 
 // Convert the Level to a string. E.g. PanicLevel becomes "panic".
-func (level Level) String() string {
+func (level *Level) String() string {
 	if b, err := level.MarshalText(); err == nil {
 		return string(b)
 	} else {
@@ -56,8 +56,8 @@ func (level *Level) UnmarshalText(text []byte) error {
 	return nil
 }
 
-func (level Level) MarshalText() ([]byte, error) {
-	switch level {
+func (level *Level) MarshalText() ([]byte, error) {
+	switch *level {
 	case TraceLevel:
 		return []byte("trace"), nil
 	case DebugLevel:
