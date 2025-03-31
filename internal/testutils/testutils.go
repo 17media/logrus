@@ -7,33 +7,33 @@ import (
 	"strings"
 	"testing"
 
-	. "github.com/17media/logrus"
+	"github.com/17media/logrus"
 
 	"github.com/stretchr/testify/require"
 )
 
-func LogAndAssertJSON(t *testing.T, log func(*Logger), assertions func(fields Fields)) {
+func LogAndAssertJSON(t *testing.T, log func(*logrus.Logger), assertions func(fields logrus.Fields)) {
 	var buffer bytes.Buffer
-	var fields Fields
+	var fields logrus.Fields
 
-	logger := New()
+	logger := logrus.New()
 	logger.Out = &buffer
-	logger.Formatter = new(JSONFormatter)
+	logger.Formatter = new(logrus.JSONFormatter)
 
 	log(logger)
 
 	err := json.Unmarshal(buffer.Bytes(), &fields)
-	require.Nil(t, err)
+	require.NoError(t, err)
 
 	assertions(fields)
 }
 
-func LogAndAssertText(t *testing.T, log func(*Logger), assertions func(fields map[string]string)) {
+func LogAndAssertText(t *testing.T, log func(*logrus.Logger), assertions func(fields map[string]string)) {
 	var buffer bytes.Buffer
 
-	logger := New()
+	logger := logrus.New()
 	logger.Out = &buffer
-	logger.Formatter = &TextFormatter{
+	logger.Formatter = &logrus.TextFormatter{
 		DisableColors: true,
 	}
 

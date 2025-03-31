@@ -212,7 +212,7 @@ func getCaller() *runtime.Frame {
 	return nil
 }
 
-func (entry Entry) HasCaller() (has bool) {
+func (entry *Entry) HasCaller() (has bool) {
 	return entry.Logger != nil &&
 		entry.Logger.ReportCaller &&
 		entry.Caller != nil

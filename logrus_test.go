@@ -465,13 +465,13 @@ func BenchmarkWithCallerTracing(b *testing.B) {
 }
 
 func TestConvertLevelToString(t *testing.T) {
-	assert.Equal(t, "trace", TraceLevel.String())
-	assert.Equal(t, "debug", DebugLevel.String())
-	assert.Equal(t, "info", InfoLevel.String())
-	assert.Equal(t, "warning", WarnLevel.String())
-	assert.Equal(t, "error", ErrorLevel.String())
-	assert.Equal(t, "fatal", FatalLevel.String())
-	assert.Equal(t, "panic", PanicLevel.String())
+	assert.Equal(t, "trace", []Level{TraceLevel}[0].String())
+	assert.Equal(t, "debug", []Level{DebugLevel}[0].String())
+	assert.Equal(t, "info", []Level{InfoLevel}[0].String())
+	assert.Equal(t, "warning", []Level{WarnLevel}[0].String())
+	assert.Equal(t, "error", []Level{ErrorLevel}[0].String())
+	assert.Equal(t, "fatal", []Level{FatalLevel}[0].String())
+	assert.Equal(t, "panic", []Level{PanicLevel}[0].String())
 }
 
 func TestParseLevel(t *testing.T) {
