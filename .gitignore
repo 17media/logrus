@@ -2,3 +2,6 @@ logrus
 vendor
 
 .idea/
+
+# asdf config
+.tool-versions
