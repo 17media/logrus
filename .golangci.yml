@@ -23,6 +23,7 @@ linters:
     - recvcheck
     - testifylint
     - unparam
+    - noctx
   exclusions:
     presets:
       - legacy
@@ -33,7 +34,6 @@ linters:
         linters:
           - gosec
           - musttag
-          - noctx # TODO: enable once we switch to Go 1.24+.
       - linters: # TODO: remove once golangci-lint is updated with https://github.com/golangci/golangci-lint/pull/6584
           - gocheckcompilerdirectives
         text: 'compiler directive unrecognized: //go:fix'
